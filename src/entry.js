@@ -35,16 +35,17 @@ export default class AwesomeProject extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedTab: '首页',
+      selectedTab: 'blueTab',
+      notifCount: 0,
+      presses: 0,
     };
   }
 
-  renderContent(pageText) {
+  renderContent(pageText, num) {
     return (
-      <View >
-        <Text >
-          {pageText}
-        </Text>
+      <View style={{ flex: 1, alignItems: 'center', backgroundColor: 'white' }}>
+        <Text style={{ margin: 50 }}>{pageText}</Text>
+        <Text style={{ margin: 50 }}>{num} re-renders of the {pageText}</Text>
       </View>
     );
   }
@@ -56,49 +57,62 @@ export default class AwesomeProject extends Component {
           unselectedTintColor="#949494"
           tintColor="#33A3F4"
           barTintColor="white"
-          hidden={false}
         >
           <TabBar.Item
-            title="首页"
-            key="首页"
-            icon={require('../images/life.png')}
-            selectedIcon={require('../images/selected_life.png')}
-            selected={this.state.selectedTab === '首页'}
+            title="生活"
+            icon={require('../images/alipay.png')}
+            selectedIcon={require('../images/alipay_sel.png')}
+            selected={this.state.selectedTab === 'blueTab'}
             onPress={() => {
               this.setState({
-                selectedTab: '首页',
+                selectedTab: 'blueTab',
               });
             }}
           >
-            {this.renderContent('首页')}
+            {this.renderContent('生活 Tab')}
           </TabBar.Item>
           <TabBar.Item
-            title="商品"
-            key="商品"
-            icon={require('../images/life.png')}
-            selectedIcon={require('../images/selected_life.png')}
-            selected={this.state.selectedTab === '商品'}
+            icon={require('../images/koubei.png')}
+            selectedIcon={require('../images/koubei_sel.png')}
+            title="口碑"
+            badge={this.state.notifCount > 0 ? this.state.notifCount : undefined}
+            selected={this.state.selectedTab === 'redTab'}
             onPress={() => {
               this.setState({
-                selectedTab: '商品',
+                selectedTab: 'redTab',
+                notifCount: this.state.notifCount + 1,
               });
             }}
           >
-            {this.renderContent('商品')}
+            {this.renderContent('口碑 Tab', this.state.notifCount)}
           </TabBar.Item>
           <TabBar.Item
-            title="订单"
-            key="订单"
-            icon={require('../images/life.png')}
-            selectedIcon={require('../images/selected_life.png')}
-            selected={this.state.selectedTab === '订单'}
+            icon={require('../images/friend.png')}
+            selectedIcon={require('../images/friend_sel.png')}
+            title="朋友"
+            selected={this.state.selectedTab === 'greenTab'}
             onPress={() => {
               this.setState({
-                selectedTab: '订单',
+                selectedTab: 'greenTab',
+                presses: this.state.presses + 1,
               });
             }}
           >
-            {this.renderContent('订单')}
+            {this.renderContent('朋友 Tab', this.state.presses)}
+          </TabBar.Item>
+          <TabBar.Item
+            icon={require('../images/busi.png')}
+            selectedIcon={require('../images/busi_sel.png')}
+            title="我的"
+            selected={this.state.selectedTab === 'yellowTab'}
+            onPress={() => {
+              this.setState({
+                selectedTab: 'yellowTab',
+                presses: this.state.presses + 1,
+              });
+            }}
+          >
+            {this.renderContent('我的 Tab', this.state.presses)}
           </TabBar.Item>
         </TabBar>
       </View>
