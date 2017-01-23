@@ -4,7 +4,7 @@ import {
 } from 'react-native';
 import { Provider } from 'react-redux';
 import { default as configureStore } from './store/createStore';
-import Index from './containers/App';
+import Index from './router/App';
 
 const store = configureStore();
 

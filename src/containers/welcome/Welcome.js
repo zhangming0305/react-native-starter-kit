@@ -93,8 +93,8 @@ const Welcome = ({ img, text }) =>
   </View>;
 
 Welcome.propTypes = {
-  img: React.PropTypes.string,
-  text: React.PropTypes.string,
+  img: React.PropTypes.string.isRequired,
+  text: React.PropTypes.string.isRequired,
 };
 
 export default Welcome;

@@ -1,37 +1,33 @@
 import React from 'react';
-import { View, Text, Alert } from 'react-native';
-import { Button, WhiteSpace, WingBlank } from 'antd-mobile';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Actions } from 'react-native-router-flux';
 
 import * as action from './action';
-import Welcome from './Welcome';
+import Login from './Login';
 
 
-class WelcomeContainer extends React.Component {
+export class Container extends React.Component {
 
   constructor(props) {
     super(props);
-    this.props.fetchStartImage();
   }
 
   render() {
     const { img, text } = this.props.welcomeState;
     return (
-      <View>
-        <Welcome
-          img={img}
-          text={text}
-        />
-      </View>
+      <Login
+        img={img}
+        text={text}
+      />
     );
   }
 }
 
-WelcomeContainer.propTypes = {
-  welcomeState: React.PropTypes.object,
-  fetchStartImage: React.PropTypes.func,
+
+Container.propTypes = {
+  welcomeState: React.PropTypes.object.isRequired,
+  fetchStartImage: React.PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
@@ -41,5 +37,5 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => bindActionCreators(action, dispatch);
 
 export default connect(mapStateToProps,
-  mapDispatchToProps)(WelcomeContainer);
+  mapDispatchToProps)(Container);
 
