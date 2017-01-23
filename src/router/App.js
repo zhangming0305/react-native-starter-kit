@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Platform } from 'react-native';
 import { Router, Scene, ActionConst } from 'react-native-router-flux';
 
 import WelcomeContainer from '../containers/welcome/Container';
@@ -18,7 +19,7 @@ const getSceneStyle = (/* NavigationSceneRendererProps */ props, computedProps) 
     shadowRadius: null,
   };
   if (computedProps.isActive) {
-    style.marginTop = computedProps.hideNavBar ? 0 : 64;
+    style.marginTop = computedProps.hideNavBar ? 0 : Platform.OS === 'android' ? 54 : 64;
     style.marginBottom = computedProps.hideTabBar ? 0 : 50;
   }
   return style;
@@ -33,6 +34,7 @@ const App = () =>
         title="欢迎"
         hideNavBar
         hideTabBar
+        initial
       />
       <Scene
         key="LoginContainer"
@@ -40,7 +42,6 @@ const App = () =>
         title="登录"
         hideNavBar={false}
         type={ActionConst.REPLACE}
-        initial
         hideTabBar
       />
       <Scene

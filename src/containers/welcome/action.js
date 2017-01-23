@@ -5,10 +5,10 @@ export const fetchStartImage = cb => (dispatch) => {
   getStartImage()
             .then((responseJson) => {
               dispatch(actionImg(responseJson));
-              setTimeout(cb, 1000);
+              setTimeout(cb, 1500);
             })
             .catch(() => {
-              setTimeout(cb, 1000);
+              setTimeout(cb, 1500);
             });
 };
 
