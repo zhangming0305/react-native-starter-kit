@@ -1,14 +1,14 @@
-import { getStartImage } from '../../service/zhihu';
-import { actionImg } from './reducer';
+import { userLogin } from '../../service/userService';
+import { actionChange, actionLogin } from './reducer';
 
-export const fetchStartImage = cb => (dispatch) => {
-  getStartImage()
-            .then((responseJson) => {
-              dispatch(actionImg(responseJson));
-              setTimeout(cb, 1000);
-            })
-            .catch(() => {
-              setTimeout(cb, 1000);
-            });
+
+export const onFieldsChange = data => (dispatch) => {
+  dispatch(actionChange(data));
 };
 
+export const login = data => (dispatch) => {
+  userLogin(data)
+  .then((responseJson) => {
+    dispatch(actionLogin(responseJson));
+  });
+};

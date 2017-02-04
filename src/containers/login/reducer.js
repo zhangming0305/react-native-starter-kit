@@ -1,22 +1,29 @@
 import { createAction } from 'redux-actions';
 
 const PATH = 'WELCOME_';
-export const IMG = `${PATH}IMG`;
+export const CHANGE = `${PATH}CHANGE`;
+export const LOGIN = `${PATH}LOGIN`;
 
-export const actionImg = createAction(IMG);
+export const actionChange = createAction(CHANGE);
+export const actionLogin = createAction(LOGIN);
 
 const initialState = {
-  img: '',
-  text: '',
+  edit: {
+    phone: {
+      dirty: false,
+      name: 'phone',
+      touched: true,
+      value: '13512345678',
+    },
+  },
 };
 
 export default function (state = initialState, action) {
   switch (action.type) {
-    case IMG:
+    case CHANGE:
       {
         return { ...state,
-          img: action.payload.img,
-          text: action.payload.text,
+          edit: Object.assign(state.edit, action.payload),
         };
       }
     default:
