@@ -35,9 +35,8 @@ const Login = ({ form, form: { getFieldProps }, login }) => (
         onClick={() => {
           form.validateFields((err, values) => {
             if (!err) {
-              console.log('Received values of form: ', values);
-              // Actions.IndexContainer({ text: 'Hello World!' });
-              login(values);
+              Actions.IndexContainer({ text: 'Hello World!' });
+              // login(values);
               return;
             }
             const keys = Object.keys(err);
