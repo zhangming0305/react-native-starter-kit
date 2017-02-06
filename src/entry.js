@@ -8,8 +8,13 @@ import Index from './router/App';
 const store = configureStore();
 
 class App extends React.Component {
+
   constructor(props) {
     super(props);
+  }
+
+  componentDidMount() {
+    codePush.sync();
   }
 
   render() {
@@ -21,4 +26,7 @@ class App extends React.Component {
   }
 }
 
-export default codePush(App);
+
+const codePushOptions = { checkFrequency: codePush.CheckFrequency.ON_APP_RESUME };
+
+export default codePush(codePushOptions)(App);
