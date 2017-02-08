@@ -14,12 +14,11 @@ export class Container extends React.Component {
 
   render() {
     const { edit } = this.props.welcomeState;
-    const { onFieldsChange, login } = this.props;
+    const { onFieldsChange } = this.props;
     return (
       <Login
         edit={edit}
         onFieldsChange={onFieldsChange}
-        login={login}
       />
     );
   }
@@ -29,7 +28,6 @@ export class Container extends React.Component {
 Container.propTypes = {
   welcomeState: React.PropTypes.object.isRequired,
   onFieldsChange: React.PropTypes.func.isRequired,
-  login: React.PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
@@ -40,4 +38,3 @@ const mapDispatchToProps = dispatch => bindActionCreators(action, dispatch);
 
 export default connect(mapStateToProps,
   mapDispatchToProps)(Container);
-

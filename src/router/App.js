@@ -34,7 +34,6 @@ const App = () =>
         title="欢迎"
         hideNavBar
         hideTabBar
-        initial
       />
       <Scene
         key="LoginContainer"
@@ -42,6 +41,7 @@ const App = () =>
         title="登录"
         hideNavBar={false}
         type={ActionConst.REPLACE}
+        initial
         hideTabBar
       />
       <Scene

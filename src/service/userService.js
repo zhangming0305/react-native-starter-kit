@@ -1,16 +1,13 @@
-const form2Form = (form) => {
-  const formData = new FormData();
-  const keys = Object.keys(form);
-  keys.forEach((key) => {
-    formData.append(key, form[key]);
-  });
+import { url, form2Form } from './utils';
 
-  return formData;
-};
-export const userLogin = form => fetch('https://news-at.zhihu.com/api/4/start-image/1080*1776', {
-  credentials: 'same-origin',
-  method: 'POST',
-  body: form2Form(form),
-})
+export const userLogin = (form) => {
+  form.isMobile = true;
+  form.login_role = 'SELLER';
+  const formData = form2Form(form);
+  return fetch(`${url}/app_login.htm`, {
+    credentials: 'same-origin',
+    method: 'POST',
+    body: formData,
+  })
     .then(response => response.json());
-
+};

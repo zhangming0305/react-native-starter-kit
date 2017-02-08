@@ -1,19 +1,23 @@
 import { createAction } from 'redux-actions';
 
-const PATH = 'WELCOME_';
+const PATH = 'LOGIN_';
 export const CHANGE = `${PATH}CHANGE`;
-export const LOGIN = `${PATH}LOGIN`;
 
 export const actionChange = createAction(CHANGE);
-export const actionLogin = createAction(LOGIN);
 
 const initialState = {
   edit: {
-    phone: {
+    username: {
       dirty: false,
-      name: 'phone',
+      name: 'username',
       touched: true,
-      value: '13512345678',
+      value: '18809807940',
+    },
+    password: {
+      dirty: false,
+      name: 'password',
+      touched: true,
+      value: '123qweASD.',
     },
   },
 };
@@ -30,4 +34,3 @@ export default function (state = initialState, action) {
       return state;
   }
 }
-
