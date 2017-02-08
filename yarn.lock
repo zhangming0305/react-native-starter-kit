@@ -3845,6 +3845,10 @@ react-native-scrollable-tab-view@^0.6.0:
     react-static-container "^1.0.1"
     react-timer-mixin "^0.13.3"
 
+react-native-storage@^0.1.5:
+  version "0.1.5"
+  resolved "http://registry.npm.taobao.org/react-native-storage/download/react-native-storage-0.1.5.tgz#91d77560e41cc9e62d587b55a21b3d6ebaba5599"
+
 react-native-swipe-out@~2.0.12:
   version "2.0.14"
   resolved "http://registry.npm.taobao.org/react-native-swipe-out/download/react-native-swipe-out-2.0.14.tgz#971b1d62dbc383892e633da003bfa69a766fe765"
