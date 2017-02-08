@@ -6,6 +6,8 @@ import {
 } from 'react-native';
 import { TabBar } from 'antd-mobile';
 
+import UserContainer from '../user/Container';
+
 
 const styles = StyleSheet.create({
   container: {
@@ -105,7 +107,7 @@ export default class AwesomeProject extends Component {
               });
             }}
           >
-            {this.renderContent('我的 Tab', this.state.presses)}
+            <UserContainer />
           </TabBar.Item>
         </TabBar>
       </View>
