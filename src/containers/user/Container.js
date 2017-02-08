@@ -7,22 +7,31 @@ import {
   View,
 } from 'react-native';
 
+import * as action from './action';
+import List from './List';
 
 export class Container extends React.Component {
 
   constructor(props) {
     super(props);
+    this.props.fetchStartImage();
   }
 
   render() {
     return (
-      <View style={{ flex: 1, alignItems: 'center', backgroundColor: 'white' }}>
-        <Text style={{ margin: 50 }}>1123</Text>
-        <Text style={{ margin: 50 }}>asdd</Text>
+      <View >
+        <List data={this.props.userState.data} />
       </View>
     );
   }
 }
 
 
-export default (Container);
+const mapStateToProps = state => ({
+  userState: state.userReducer,
+});
+
+const mapDispatchToProps = dispatch => bindActionCreators(action, dispatch);
+
+export default connect(mapStateToProps,
+  mapDispatchToProps)(Container);

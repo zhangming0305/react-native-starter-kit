@@ -5,7 +5,7 @@ import { Router, Scene, ActionConst } from 'react-native-router-flux';
 
 import WelcomeContainer from '../containers/welcome/Container';
 import LoginContainer from '../containers/login/Container';
-import IndexContainer from '../containers/index/IndexContainer';
+import IndexContainer from '../containers/tab/Container';
 
 const RouterWithRedux = connect()(Router);
 

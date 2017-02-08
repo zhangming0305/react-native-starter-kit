@@ -8,7 +8,6 @@ import { TabBar } from 'antd-mobile';
 
 import UserContainer from '../user/Container';
 
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -26,7 +25,7 @@ const styles = StyleSheet.create({
   },
 });
 
-export default class AwesomeProject extends Component {
+export default class TabContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
