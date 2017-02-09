@@ -11,15 +11,10 @@ import List from './List';
 
 export class Container extends React.Component {
 
-  constructor(props) {
-    super(props);
-  }
 
   render() {
     return (
-      <View >
-        <List />
-      </View>
+      <List />
     );
   }
 }

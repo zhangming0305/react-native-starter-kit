@@ -1,6 +1,6 @@
 import {
-  brandList,
-} from '../../service/userService';
+  goodsList,
+} from '../../service/goodsService';
 import {
   actionList,
   actionSearchChange,
@@ -8,7 +8,7 @@ import {
 } from './reducer';
 
 export const fetchList = () => (dispatch) => {
-  brandList({})
+  goodsList({})
     .then((responseJson) => {
       dispatch(actionList(responseJson.data));
     })
@@ -19,7 +19,7 @@ export const searchChange = value => actionSearchChange(value);
 
 
 export const search = value => (dispatch) => {
-  brandList({})
+  goodsList({ goodsName: value })
     .then((responseJson) => {
       dispatch(actionList(responseJson.data));
     })

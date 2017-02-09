@@ -22,11 +22,9 @@ const styles = StyleSheet.create({
 });
 
 const renderContent = (pageText, num) => (
-  <View style={{ flex: 1, alignItems: 'center', backgroundColor: 'white' }}>
-    <Text style={{ margin: 50 }}>{pageText}</Text>
-    <Text style={{ margin: 50 }}>{num} re-renders of the {pageText}</Text>
-  </View>
-    );
+  <View
+    style={{ flex: 1, backgroundColor: '#f5f5f9' }}
+  />);
 
 
 const Login = ({ currentTab, changeCurrentTab }) => (

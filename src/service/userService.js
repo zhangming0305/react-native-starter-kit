@@ -12,4 +12,3 @@ export const userLogin = (form) => {
     .then(response => response.json());
 };
 
-export const brandList = form => mFetch('/erp/goods_list.htm', form);

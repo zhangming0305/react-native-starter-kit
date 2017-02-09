@@ -1,11 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import {
-  StyleSheet,
-  Text,
-  View,
-} from 'react-native';
 
 import * as action from './action';
 import Tabs from './Tabs';
@@ -13,7 +8,7 @@ import Tabs from './Tabs';
 export class Container extends React.Component {
 
   render() {
-    const { currentTab } = this.props.tabReducer;
+    const { currentTab } = this.props.tabState;
     return (
       <Tabs
         currentTab={currentTab}
@@ -23,9 +18,14 @@ export class Container extends React.Component {
   }
 }
 
+Container.propTypes = {
+  tabState: React.PropTypes.object.isRequired,
+  changeCurrentTab: React.PropTypes.func.isRequired,
+};
+
 
 const mapStateToProps = state => ({
-  tabReducer: state.tabReducer,
+  tabState: state.tabReducer,
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators(action, dispatch);

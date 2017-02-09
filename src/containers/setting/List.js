@@ -10,6 +10,7 @@ export default class BasicListExample extends React.Component {
   render() {
     return (
       <ScrollView
+        style={{ flex: 1, backgroundColor: '#f5f5f9' }}
         automaticallyAdjustContentInsets={false}
         showsHorizontalScrollIndicator={false}
         showsVerticalScrollIndicator={false}
