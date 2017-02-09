@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { TabBar } from 'antd-mobile';
+import { Actions } from 'react-native-router-flux';
 
 import SettingContainer from '../setting/Container';
 
@@ -41,6 +42,7 @@ const Login = ({ currentTab, changeCurrentTab }) => (
         selected={currentTab === 'index'}
         onPress={() => {
           changeCurrentTab('index');
+          Actions.refresh({ title: '首页' });
         }}
       >
         <SettingContainer />
@@ -52,6 +54,7 @@ const Login = ({ currentTab, changeCurrentTab }) => (
         selected={currentTab === 'sell'}
         onPress={() => {
           changeCurrentTab('sell');
+          Actions.refresh({ title: '销售' });
         }}
       >
         {renderContent('生活 Tab')}
@@ -63,6 +66,7 @@ const Login = ({ currentTab, changeCurrentTab }) => (
         selected={currentTab === 'wh'}
         onPress={() => {
           changeCurrentTab('wh');
+          Actions.refresh({ title: '库存' });
         }}
       >
         {renderContent('生活 Tab')}
@@ -74,6 +78,7 @@ const Login = ({ currentTab, changeCurrentTab }) => (
         selected={currentTab === 'sheet'}
         onPress={() => {
           changeCurrentTab('sheet');
+          Actions.refresh({ title: '报表' });
         }}
       >
         {renderContent('生活 Tab')}
@@ -85,6 +90,7 @@ const Login = ({ currentTab, changeCurrentTab }) => (
         selected={currentTab === 'fan'}
         onPress={() => {
           changeCurrentTab('fan');
+          Actions.refresh({ title: '财务' });
         }}
       >
         {renderContent('生活 Tab')}

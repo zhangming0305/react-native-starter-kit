@@ -30,7 +30,17 @@ export const login = (data) => {
         );
       }
     })
-    .catch((err) => {});
+    .catch((err) => {
+      Alert.alert('错误',
+        '登录失败，请重试', [{
+          text: '确定',
+          style: 'cancel',
+        }], {
+          cancelable: false,
+        },
+      );
+    },
+    );
 };
 
 const formSubmit = (form) => {
