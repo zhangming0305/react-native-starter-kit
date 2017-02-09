@@ -39,7 +39,8 @@ export const mFetch = (mUrl, form) => {
       // 你也可以使用“看似”同步的async/await语法
 
     const formData = form2Form(form);
-    return fetch(`${url}/app${mUrl}`, {
+
+    const option = {
       headers: {
         verify: ret.verify,
         userId: ret.userId,
@@ -47,8 +48,12 @@ export const mFetch = (mUrl, form) => {
       },
       credentials: 'same-origin',
       method: 'POST',
-      body: formData,
-    });
+
+    };
+    if (Object.keys(form).length > 0) {
+      option.body = formData;
+    }
+    return fetch(`${url}/app${mUrl}`, option);
   })
     .then(response => response.json())
     .catch((err) => {
