@@ -1,23 +1,24 @@
 import { createAction } from 'redux-actions';
 
-const PATH = 'USER_';
-export const LIST = `${PATH}LIST`;
+const PATH = 'TAB_';
+export const CURRENT = `${PATH}CURRENT`;
 
-export const actionList = createAction(LIST);
+export const actionCurrent = createAction(CURRENT);
 
 const initialState = {
-  data: [],
+  currentTab: 'index',
 };
 
 export default function (state = initialState, action) {
   switch (action.type) {
-    case LIST:
+    case CURRENT:
       {
         return { ...state,
-          data: action.payload,
+          currentTab: action.payload,
         };
       }
     default:
       return state;
   }
 }
+

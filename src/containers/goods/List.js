@@ -2,7 +2,6 @@
 import React from 'react';
 import { View, Text, TouchableHighlight, Image } from 'react-native';
 import { ListView } from 'antd-mobile';
-import assign from 'object-assign';
 
 const data = [
   {
@@ -79,11 +78,9 @@ export default React.createClass({
         }}
       />
     );
-    const row = (obj, sectionID, rowID, highlightRow = (_sId, _rId) => {}) => {
-      console.log(rowID, obj);
-      return (
-        <View key={rowID}>
-          <TouchableHighlight
+    const row = (obj, sectionID, rowID, highlightRow = (_sId, _rId) => {}) => (
+      <View key={rowID}>
+        <TouchableHighlight
             underlayColor={'rgba(100,100,100,0.2)'}
             style={[{ padding: 8, backgroundColor: 'white' }]}
             onPress={() => { highlightRow(sectionID, rowID); }}
@@ -104,11 +101,10 @@ export default React.createClass({
               </View>
             </View>
           </TouchableHighlight>
-        </View>
+      </View>
       );
-    };
     const loadingTxt = this.state.isLoading ? '加载中...' : '加载完毕';
-    console.log(this.props.data);
+
     return (
       <ListView
         dataSource={this.state.dataSource}
@@ -120,6 +116,7 @@ export default React.createClass({
         scrollEventThrottle={20}
         onEndReached={this.onEndReached}
         onEndReachedThreshold={10}
+        enableEmptySections
       />
     );
   },

@@ -6,6 +6,7 @@ import { Router, Scene, ActionConst } from 'react-native-router-flux';
 import WelcomeContainer from '../containers/welcome/Container';
 import LoginContainer from '../containers/login/Container';
 import IndexContainer from '../containers/tab/Container';
+import GoodsContainer from '../containers/goods/Container';
 
 const RouterWithRedux = connect()(Router);
 
@@ -41,8 +42,8 @@ const App = () =>
         title="登录"
         hideNavBar={false}
         type={ActionConst.REPLACE}
-        initial
         hideTabBar
+        initial
       />
       <Scene
         key="IndexContainer"
@@ -50,6 +51,14 @@ const App = () =>
         title="首页"
         hideNavBar={false}
         type={ActionConst.REPLACE}
+        hideTabBar
+      />
+      <Scene
+        key="GoodsContainer"
+        component={GoodsContainer}
+        title="商品"
+        hideNavBar={false}
+        type={ActionConst.PUSH}
         hideTabBar
       />
     </Scene>
