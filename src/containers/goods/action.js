@@ -4,10 +4,11 @@ import {
 import {
   actionList,
   actionSearchChange,
-  actionSearch,
+  actionLoading,
 } from './reducer';
 
 export const fetchList = () => (dispatch) => {
+  dispatch(actionLoading());
   goodsList({})
     .then((responseJson) => {
       dispatch(actionList(responseJson.data));
