@@ -18,7 +18,7 @@ export class Container extends React.Component {
 
   render() {
     const { searchChange, search, fetchList } = this.props;
-    const { data, searchStr, loading } = this.props.goodsState;
+    const { data, currentPage, searchStr, loading } = this.props.goodsState;
     return (
       <View >
         <SearchBar
@@ -35,6 +35,7 @@ export class Container extends React.Component {
         />
         <List
           data={data}
+          currentPage={currentPage}
           loading={loading}
           fetchList={fetchList}
         />

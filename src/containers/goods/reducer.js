@@ -21,8 +21,15 @@ export default function (state = initialState, action) {
   switch (action.type) {
     case LIST:
       {
+        let { data } = state;
+        if (action.payload.currentPage > 1) {
+          data = data.concat(action.payload.data);
+        } else {
+          data = action.payload.data;
+        }
         return { ...state,
-          data: action.payload,
+          data,
+          currentPage: action.payload.currentPage,
           loading: false,
         };
       }

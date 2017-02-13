@@ -7,11 +7,11 @@ import {
   actionLoading,
 } from './reducer';
 
-export const fetchList = () => (dispatch) => {
+export const fetchList = (para = {}) => (dispatch) => {
   dispatch(actionLoading());
-  goodsList({})
+  goodsList(para)
     .then((responseJson) => {
-      dispatch(actionList(responseJson.data));
+      dispatch(actionList(responseJson));
     })
     .catch(() => {});
 };

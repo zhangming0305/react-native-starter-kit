@@ -8,12 +8,11 @@ const { width } = Dimensions.get('window');
 const separator = (sectionID, rowID) => (<View
   key={`${sectionID}-${rowID}`}
   style={{
-    marginLeft: 120,
-    backgroundColor: '#F5F5F9',
-    height: 1,
+    backgroundColor: '#ddd',
+    height: 0.5,
     borderStyle: 'solid',
-    borderBottomWidth: 1,
-    borderBottomColor: '#ECECED',
+    borderBottomWidth: 0.5,
+    borderBottomColor: '#ddd',
   }}
 />
 );
@@ -28,7 +27,7 @@ const styles = StyleSheet.create({
   },
   content: {
     width: width - 120,
-    padding: 8,
+    padding: 10,
   },
 });
 
@@ -65,7 +64,7 @@ export default class List extends React.Component {
           <View style={styles.row}>
             <Image
               style={styles.img}
-              source={{ uri: obj.imgPath }}
+              source={obj.imgPath ? { uri: obj.imgPath } : require('../../../images/alipay.png')}
             />
             <View
               style={styles.content}
@@ -88,7 +87,7 @@ export default class List extends React.Component {
       </View>
       );
 
-    const { loading, fetchList } = this.props;
+    const { loading, fetchList, currentPage } = this.props;
     return (
       <ListView
         refreshControl={
@@ -103,7 +102,7 @@ export default class List extends React.Component {
         pageSize={20}
         scrollRenderAheadDistance={500}
         scrollEventThrottle={20}
-        onEndReached={fetchList}
+        onEndReached={() => fetchList({ currentPage: currentPage + 1 })}
         onEndReachedThreshold={10}
         enableEmptySections
       />
@@ -116,4 +115,5 @@ List.propTypes = {
   loading: React.PropTypes.bool.isRequired,
   fetchList: React.PropTypes.func.isRequired,
   data: React.PropTypes.array.isRequired,
+  currentPage: React.PropTypes.number,
 };
