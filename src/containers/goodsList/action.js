@@ -1,11 +1,15 @@
 import {
   goodsList,
+  goodsEdit,
 } from '../../service/goodsService';
 import {
   actionList,
   actionSearchChange,
   actionLoading,
 } from './reducer';
+import {
+  actionLoad,
+} from '../goodsEdit/reducer';
 
 export const fetchList = (para = {}) => (dispatch) => {
   dispatch(actionLoading());
@@ -18,11 +22,18 @@ export const fetchList = (para = {}) => (dispatch) => {
 
 export const searchChange = value => actionSearchChange(value);
 
-
 export const search = value => (dispatch) => {
   goodsList({ goodsName: value })
     .then((responseJson) => {
       dispatch(actionList(responseJson.data));
+    })
+    .catch(() => {});
+};
+
+export const fetchEdit = (para = {}) => (dispatch) => {
+  goodsEdit(para)
+    .then((responseJson) => {
+      dispatch(actionLoad(responseJson.data));
     })
     .catch(() => {});
 };
