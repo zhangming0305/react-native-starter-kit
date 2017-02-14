@@ -11,7 +11,6 @@ export class Container extends React.Component {
   render() {
     const { edit } = this.props.goodsEditState;
     const { onFieldsChange } = this.props;
-    console.log(1111, edit);
     return (
       <Edit
         edit={edit}

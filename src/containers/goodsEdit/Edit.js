@@ -36,7 +36,7 @@ const GoodsEdit = ({ form, form: { getFieldProps } }) => (
       <InputItem
         {...getFieldProps('goodsName', {
           rules: [{
-            required: true, message: '请填写用户名或手机号',
+            required: true, message: '请填写商品名称',
           }],
         })}
         clear
@@ -44,9 +44,9 @@ const GoodsEdit = ({ form, form: { getFieldProps } }) => (
         商品名称
       </InputItem>
       <InputItem
-        {...getFieldProps('spec', {
+        {...getFieldProps('artNo', {
           rules: [{
-            required: true, message: '请填写密码',
+            required: true, message: '请填写货号',
           }],
         })}
         clear
@@ -58,12 +58,51 @@ const GoodsEdit = ({ form, form: { getFieldProps } }) => (
     <List>
       <List.Item
         extra={<Switch
-          {...getFieldProps('Switch1', {
-            initialValue: true,
+          {...getFieldProps('specType', {
             valuePropName: 'checked',
           })}
         />}
-      >单规格</List.Item>
+      >多规格</List.Item>
+      <InputItem
+        {...getFieldProps('goodsSpec', {
+          rules: [{
+            required: true, message: '请填写规格',
+          }],
+        })}
+        clear
+      >
+        规格
+      </InputItem>
+      <InputItem
+        {...getFieldProps('goodsMerchantCode', {
+          rules: [{
+            required: true, message: '请填写商家编码',
+          }],
+        })}
+        clear
+      >
+        商家编码
+      </InputItem>
+      <InputItem
+        {...getFieldProps('goodsBarCode', {
+          rules: [{
+            required: true, message: '请填写条形码',
+          }],
+        })}
+        clear
+      >
+        条形码
+      </InputItem>
+      <InputItem
+        {...getFieldProps('goodsReferencePrice', {
+          rules: [{
+            required: true, message: '请填写参考价格',
+          }],
+        })}
+        clear
+      >
+        参考价格
+      </InputItem>
     </List>
   </ScrollView>
 );
