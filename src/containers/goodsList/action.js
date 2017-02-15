@@ -1,3 +1,5 @@
+import { Actions } from 'react-native-router-flux';
+
 import {
   goodsList,
   goodsEdit,
@@ -33,6 +35,7 @@ export const search = value => (dispatch) => {
 export const fetchEdit = (para = {}) => (dispatch) => {
   goodsEdit(para)
     .then((responseJson) => {
+      Actions.GoodsEditContainer({ title: '商品编辑' });
       dispatch(actionLoad(responseJson.data));
     })
     .catch(() => {});

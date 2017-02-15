@@ -1,7 +1,6 @@
 import React from 'react';
 import { View, Text, TouchableHighlight, Image, RefreshControl, Dimensions, StyleSheet } from 'react-native';
 import { ListView } from 'antd-mobile';
-import { Actions } from 'react-native-router-flux';
 
 import textStyle from '../../style/text';
 
@@ -64,7 +63,6 @@ export default class List extends React.Component {
           underlayColor={'rgba(100,100,100,0.2)'}
           style={[{ backgroundColor: 'white' }]}
           onPress={() => {
-            Actions.GoodsEditContainer({ title: '商品编辑' });
             fetchEdit({ id: obj.gsGoodsId });
           }}
         >

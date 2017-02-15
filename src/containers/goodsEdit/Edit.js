@@ -3,7 +3,6 @@ import { View, Alert, ScrollView } from 'react-native';
 import { Button, WhiteSpace, WingBlank, InputItem, Switch, List } from 'antd-mobile';
 import { createForm } from 'rc-form';
 import { Actions } from 'react-native-router-flux';
-import { userGoodsEdit } from '../../service/userService';
 
 
 const formSubmit = (form) => {

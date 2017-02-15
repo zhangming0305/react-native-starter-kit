@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Platform } from 'react-native';
 import { Router, Scene, ActionConst } from 'react-native-router-flux';
+import { Actions } from 'react-native-router-flux';
 
 import WelcomeContainer from '../containers/welcome/Container';
 import LoginContainer from '../containers/login/Container';
@@ -45,7 +46,6 @@ const App = () =>
         hideNavBar={false}
         type={ActionConst.REPLACE}
         hideTabBar
-        initial
       />
       <Scene
         key="IndexContainer"
@@ -59,9 +59,12 @@ const App = () =>
         key="GoodsContainer"
         component={GoodsContainer}
         title="商品"
+        onRight={() => { Actions.GoodsEditContainer({ title: '商品新增' }); }}
+        rightTitle="新增"
         hideNavBar={false}
         type={ActionConst.PUSH}
         hideTabBar
+        initial
       />
       <Scene
         key="GoodsEditContainer"
