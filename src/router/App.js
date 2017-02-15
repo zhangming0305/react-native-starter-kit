@@ -1,8 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Platform } from 'react-native';
-import { Router, Scene, ActionConst } from 'react-native-router-flux';
-import { Actions } from 'react-native-router-flux';
+import { Router, Scene, ActionConst, Actions } from 'react-native-router-flux';
 
 import WelcomeContainer from '../containers/welcome/Container';
 import LoginContainer from '../containers/login/Container';
