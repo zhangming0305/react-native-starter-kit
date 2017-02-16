@@ -22,30 +22,17 @@ const styles = StyleSheet.create({
   },
 });
 
+
+const dataSource = new ListView.DataSource({
+  rowHasChanged: (row1, row2) => row1 !== row2,
+});
+
+
 export default class List extends React.Component {
 
-  constructor(props) {
-    super(props);
-
-    this.dataSource = new ListView.DataSource({
-      rowHasChanged: (row1, row2) => row1 !== row2,
-    });
-
-    this.state = {
-      dataSource: this.dataSource.cloneWithRows([]),
-    };
-  }
-
-  componentWillReceiveProps(nextProps) {
-    if (this.props.data !== nextProps.data) {
-      this.setState({
-        dataSource: this.dataSource.cloneWithRows(nextProps.data),
-      });
-    }
-  }
 
   render() {
-    const { loading, fetchList, currentPage, fetchEdit } = this.props;
+    const { loading, fetchList, currentPage, fetchEdit, data } = this.props;
 
     const row = (obj, sectionID, rowID) => (
       <View key={rowID}>
@@ -91,7 +78,7 @@ export default class List extends React.Component {
           />
         }
         renderSeparator={separator}
-        dataSource={this.state.dataSource}
+        dataSource={dataSource.cloneWithRows(data)}
         renderRow={row}
         pageSize={20}
         scrollRenderAheadDistance={500}

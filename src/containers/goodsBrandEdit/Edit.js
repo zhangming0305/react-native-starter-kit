@@ -1,18 +1,21 @@
 import React from 'react';
-import { View, Alert, ScrollView } from 'react-native';
+import { View, Alert } from 'react-native';
 import { InputItem, List, ActivityIndicator } from 'antd-mobile';
 import { createForm } from 'rc-form';
 import { Actions } from 'react-native-router-flux';
 
+import styles from '../../style/container';
 
 export class GoodsEdit extends React.Component {
 
   constructor(props) {
     super(props);
     this.submit = this.submit.bind(this);
-    Actions.refresh({ onRight: this.submit, rightTitle: '保存' });
   }
 
+  componentWillMount() {
+    Actions.refresh({ onRight: this.submit, rightTitle: '保存' });
+  }
 
   submit() {
     this.props.form.validateFields((err, values) => {
@@ -35,15 +38,10 @@ export class GoodsEdit extends React.Component {
   }
 
   render() {
-    const { form } = this.props;
+    const { form, saving } = this.props;
     const { getFieldProps } = form;
     return (
-      <ScrollView
-        style={{ flex: 1, backgroundColor: '#f5f5f9' }}
-        automaticallyAdjustContentInsets={false}
-        showsHorizontalScrollIndicator={false}
-        showsVerticalScrollIndicator={false}
-      >
+      <View style={styles.container}>
         <List>
           <InputItem
             {...getFieldProps('goodsBrandName', {
@@ -56,14 +54,13 @@ export class GoodsEdit extends React.Component {
         品牌名称
       </InputItem>
         </List>
-
         <ActivityIndicator
-          animating
+          animating={saving}
           toast
           size="large"
           text="正在保存"
         />
-      </ScrollView>
+      </View>
     );
   }
 }
@@ -73,6 +70,7 @@ GoodsEdit.propTypes = {
   form: React.PropTypes.object.isRequired,
   edit: React.PropTypes.object.isRequired,
   fetchSave: React.PropTypes.func.isRequired,
+  saving: React.PropTypes.bool.isRequired,
 };
 
 export default createForm({

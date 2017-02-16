@@ -46,6 +46,7 @@ const App = () =>
         title="登录"
         type={ActionConst.REPLACE}
         hideTabBar
+        initial
       />
       <Scene
         key="IndexContainer"
@@ -74,8 +75,6 @@ const App = () =>
         key="GoodsBrandListContainer"
         component={GoodsBrandListContainer}
         title="商品品牌"
-        onRight={() => { Actions.GoodsBrandEditContainer({ title: '品牌新增' }); }}
-        rightTitle="新增"
         type={ActionConst.PUSH}
         hideTabBar
       />
@@ -85,7 +84,6 @@ const App = () =>
         title="品牌新增"
         type={ActionConst.PUSH}
         hideTabBar
-        initial
       />
     </Scene>
   </RouterWithRedux>;

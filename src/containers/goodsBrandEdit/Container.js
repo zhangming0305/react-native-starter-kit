@@ -8,13 +8,14 @@ import Edit from './Edit';
 export class Container extends React.Component {
 
   render() {
-    const { edit } = this.props.goodsBrandEditState;
+    const { edit, saving } = this.props.goodsBrandEditState;
     const { onFieldsChange, fetchSave } = this.props;
     return (
       <Edit
         edit={edit}
         onFieldsChange={onFieldsChange}
         fetchSave={fetchSave}
+        saving={saving}
       />
     );
   }

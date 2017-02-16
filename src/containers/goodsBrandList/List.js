@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, TouchableHighlight, RefreshControl, StyleSheet } from 'react-native';
-import { ListView } from 'antd-mobile';
+import { ListView, SwipeAction } from 'antd-mobile';
 
 import Separator from '../../components/Separator';
 import Arrow from '../../components/Arrow';
@@ -19,48 +19,44 @@ const styles = StyleSheet.create({
   },
 });
 
+const dataSource = new ListView.DataSource({
+  rowHasChanged: (row1, row2) => row1 !== row2,
+});
+
 export default class List extends React.Component {
 
-  constructor(props) {
-    super(props);
-
-    this.dataSource = new ListView.DataSource({
-      rowHasChanged: (row1, row2) => row1 !== row2,
-    });
-
-    this.state = {
-      dataSource: this.dataSource.cloneWithRows([]),
-    };
-  }
-
-  componentWillReceiveProps(nextProps) {
-    if (this.props.data !== nextProps.data) {
-      this.setState({
-        dataSource: this.dataSource.cloneWithRows(nextProps.data),
-      });
-    }
-  }
-
   render() {
-    const { loading, fetchEdit, onEndReached, onRefresh } = this.props;
+    const { loading, fetchEdit, onEndReached, onRefresh, fetchDel, data } = this.props;
 
     const row = (obj, sectionID, rowID) => (
       <View key={rowID}>
-        <TouchableHighlight
-          underlayColor={'rgba(100,100,100,0.2)'}
-          style={[{ backgroundColor: 'white' }]}
-          onPress={() => {
-            fetchEdit({ id: obj.id });
-          }}
+        <SwipeAction
+          style={{ backgroundColor: 'gray' }}
+          autoClose
+          right={[
+            {
+              text: '删除',
+              onPress: () => { fetchDel({ ids: obj.id }); },
+              style: { backgroundColor: '#F4333C', color: 'white' },
+            },
+          ]}
         >
-          <View style={styles.row}>
-            <Text
-              numberOfLines={1}
-              style={textStyle.subHead}
-            >{obj.goodsBrandName}</Text>
-            <Arrow />
-          </View>
-        </TouchableHighlight>
+          <TouchableHighlight
+            underlayColor={'rgba(100,100,100,0.2)'}
+            style={[{ backgroundColor: 'white' }]}
+            onPress={() => {
+              fetchEdit({ id: obj.id });
+            }}
+          >
+            <View style={styles.row}>
+              <Text
+                numberOfLines={1}
+                style={textStyle.subHead}
+              >{obj.goodsBrandName}</Text>
+              <Arrow />
+            </View>
+          </TouchableHighlight>
+        </SwipeAction>
       </View>
     );
     const refreshControl = (<RefreshControl
@@ -72,7 +68,7 @@ export default class List extends React.Component {
         style={styles.list}
         refreshControl={refreshControl}
         renderSeparator={Separator}
-        dataSource={this.state.dataSource}
+        dataSource={dataSource.cloneWithRows(data)}
         renderRow={row}
         scrollRenderAheadDistance={500}
         scrollEventThrottle={20}
@@ -89,5 +85,6 @@ List.propTypes = {
   onEndReached: React.PropTypes.func.isRequired,
   onRefresh: React.PropTypes.func.isRequired,
   fetchEdit: React.PropTypes.func.isRequired,
+  fetchDel: React.PropTypes.func.isRequired,
   data: React.PropTypes.array.isRequired,
 };
