@@ -27,7 +27,7 @@ export default class ListItemOperation extends React.Component {
           );
         }}
       >
-        { this.props.children}
+        {this.props.children}
       </TouchableHighlight>);
     }
 
@@ -42,7 +42,7 @@ export default class ListItemOperation extends React.Component {
         style={[{ backgroundColor: 'white' }]}
         onPress={onPress}
       >
-        { this.props.children}
+        {this.props.children}
       </TouchableHighlight>
     </Swipeout>
     );
