@@ -1,16 +1,12 @@
 import React from 'react';
-import { View, Text, TouchableHighlight, Image, RefreshControl, Dimensions, StyleSheet } from 'react-native';
-import { ListView } from 'antd-mobile';
+import { View, Text, TouchableHighlight, Image, Dimensions, StyleSheet } from 'react-native';
 
-import textStyle from '../../style/text';
-import Separator from '../../components/Separator';
+import textStyle from '../../styles/text';
+import RefreshableListview from '../../components/RefreshableListview';
 
 const { width } = Dimensions.get('window');
 
 const styles = StyleSheet.create({
-  list: {
-    minHeight: 400,
-  },
   row: {
     flexDirection: 'row',
     height: 120,
@@ -26,13 +22,7 @@ const styles = StyleSheet.create({
 });
 
 
-const dataSource = new ListView.DataSource({
-  rowHasChanged: (row1, row2) => row1 !== row2,
-});
-
-
 export default class List extends React.Component {
-
 
   render() {
     const { loading, fetchEdit, data, onEndReached, onRefresh } = this.props;
@@ -71,27 +61,17 @@ export default class List extends React.Component {
         </TouchableHighlight>
       </View>
     );
-    const refreshControl = (<RefreshControl
-      refreshing={loading}
-      onRefresh={onRefresh}
-    />);
     return (
-      <ListView
-        style={styles.list}
-        refreshControl={refreshControl}
-        renderSeparator={Separator}
-        dataSource={dataSource.cloneWithRows(data)}
-        renderRow={row}
-        scrollRenderAheadDistance={500}
-        scrollEventThrottle={20}
+      <RefreshableListview
+        loading={loading}
+        data={data}
+        onRefresh={onRefresh}
         onEndReached={onEndReached}
-        onEndReachedThreshold={10}
-        enableEmptySections
+        renderRow={row}
       />
     );
   }
 }
-
 
 List.propTypes = {
   loading: React.PropTypes.bool.isRequired,

@@ -4,7 +4,7 @@ import { InputItem, List, ActivityIndicator } from 'antd-mobile';
 import { createForm } from 'rc-form';
 import { Actions } from 'react-native-router-flux';
 
-import styles from '../../style/container';
+import styles from '../../styles/container';
 
 export class GoodsEdit extends React.Component {
 

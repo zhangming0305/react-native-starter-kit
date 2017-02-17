@@ -6,7 +6,7 @@ import ListItemOperation from '../../components/ListItemOperation';
 
 import Separator from '../../components/Separator';
 import Arrow from '../../components/Arrow';
-import textStyle from '../../style/text';
+import textStyle from '../../styles/text';
 
 const styles = StyleSheet.create({
   list: {
