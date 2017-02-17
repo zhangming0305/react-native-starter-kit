@@ -50,6 +50,7 @@ export class GoodsEdit extends React.Component {
               }],
             })}
             clear
+            autoFocus
           >
         品牌名称
       </InputItem>

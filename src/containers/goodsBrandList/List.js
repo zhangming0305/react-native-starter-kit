@@ -1,6 +1,9 @@
 import React from 'react';
 import { View, Text, TouchableHighlight, RefreshControl, StyleSheet } from 'react-native';
-import { ListView, SwipeAction } from 'antd-mobile';
+import { ListView } from 'antd-mobile';
+import Swipeout from 'react-native-swipe-out';
+
+import ListItemOperation from '../../components/ListItemOperation';
 
 import Separator from '../../components/Separator';
 import Arrow from '../../components/Arrow';
@@ -30,33 +33,26 @@ export default class List extends React.Component {
 
     const row = (obj, sectionID, rowID) => (
       <View key={rowID}>
-        <SwipeAction
-          style={{ backgroundColor: 'gray' }}
-          autoClose
-          right={[
+        <ListItemOperation
+          onPress={() => {
+            fetchEdit({ id: obj.id });
+          }}
+          operation={[
             {
               text: '删除',
               onPress: () => { fetchDel({ ids: obj.id }); },
-              style: { backgroundColor: '#F4333C', color: 'white' },
+              backgroundColor: '#F4333C',
             },
           ]}
         >
-          <TouchableHighlight
-            underlayColor={'rgba(100,100,100,0.2)'}
-            style={[{ backgroundColor: 'white' }]}
-            onPress={() => {
-              fetchEdit({ id: obj.id });
-            }}
-          >
-            <View style={styles.row}>
-              <Text
-                numberOfLines={1}
-                style={textStyle.subHead}
-              >{obj.goodsBrandName}</Text>
-              <Arrow />
-            </View>
-          </TouchableHighlight>
-        </SwipeAction>
+          <View style={styles.row}>
+            <Text
+              numberOfLines={1}
+              style={textStyle.subHead}
+            >{obj.goodsBrandName}</Text>
+            <Arrow />
+          </View>
+        </ListItemOperation>
       </View>
     );
     const refreshControl = (<RefreshControl

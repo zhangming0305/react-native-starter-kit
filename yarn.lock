@@ -93,9 +93,9 @@ ansicolors@~0.2.1:
   version "0.2.1"
   resolved "http://registry.npm.taobao.org/ansicolors/download/ansicolors-0.2.1.tgz#be089599097b74a5c9c4a84a0cdbcdb62bd87aef"
 
-antd-mobile@last:
-  version "1.0.0-beta.2"
-  resolved "http://registry.npm.taobao.org/antd-mobile/download/antd-mobile-1.0.0-beta.2.tgz#d4bf0ab9609435dc73231b9d95390129f70e2866"
+antd-mobile@1.0.0-beta.3:
+  version "1.0.0-beta.3"
+  resolved "http://registry.npm.taobao.org/antd-mobile/download/antd-mobile-1.0.0-beta.3.tgz#413e97d6de777b6645d1877bd414a2240cd59772"
   dependencies:
     array-tree-filter "~1.0.0"
     babel-runtime "6.x"
@@ -3849,7 +3849,7 @@ react-native-storage@^0.1.5:
   version "0.1.5"
   resolved "http://registry.npm.taobao.org/react-native-storage/download/react-native-storage-0.1.5.tgz#91d77560e41cc9e62d587b55a21b3d6ebaba5599"
 
-react-native-swipe-out@~2.0.12:
+react-native-swipe-out@^2.0.14, react-native-swipe-out@~2.0.12:
   version "2.0.14"
   resolved "http://registry.npm.taobao.org/react-native-swipe-out/download/react-native-swipe-out-2.0.14.tgz#971b1d62dbc383892e633da003bfa69a766fe765"
   dependencies:
