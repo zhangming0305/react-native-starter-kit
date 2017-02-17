@@ -35,10 +35,15 @@ export class Container extends React.Component {
         />
         <List
           data={data}
-          currentPage={currentPage}
           loading={loading}
-          fetchList={fetchList}
           fetchEdit={fetchEdit}
+          onEndReached={() => {
+            fetchList({ currentPage: currentPage + 1 });
+          }}
+          onRefresh={() => {
+            refreshList();
+            fetchList();
+          }}
         />
       </View>
     );

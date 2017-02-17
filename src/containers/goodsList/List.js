@@ -3,11 +3,14 @@ import { View, Text, TouchableHighlight, Image, RefreshControl, Dimensions, Styl
 import { ListView } from 'antd-mobile';
 
 import textStyle from '../../style/text';
-import separator from '../../components/Separator';
+import Separator from '../../components/Separator';
 
 const { width } = Dimensions.get('window');
 
 const styles = StyleSheet.create({
+  list: {
+    minHeight: 400,
+  },
   row: {
     flexDirection: 'row',
     height: 120,
@@ -32,7 +35,7 @@ export default class List extends React.Component {
 
 
   render() {
-    const { loading, fetchList, currentPage, fetchEdit, data } = this.props;
+    const { loading, fetchEdit, data, onEndReached, onRefresh } = this.props;
 
     const row = (obj, sectionID, rowID) => (
       <View key={rowID}>
@@ -68,22 +71,20 @@ export default class List extends React.Component {
         </TouchableHighlight>
       </View>
     );
-
+    const refreshControl = (<RefreshControl
+      refreshing={loading}
+      onRefresh={onRefresh}
+    />);
     return (
       <ListView
-        refreshControl={
-          <RefreshControl
-            refreshing={loading}
-            onRefresh={fetchList}
-          />
-        }
-        renderSeparator={separator}
+        style={styles.list}
+        refreshControl={refreshControl}
+        renderSeparator={Separator}
         dataSource={dataSource.cloneWithRows(data)}
         renderRow={row}
-        pageSize={20}
         scrollRenderAheadDistance={500}
         scrollEventThrottle={20}
-        onEndReached={() => fetchList({ currentPage: currentPage + 1 })}
+        onEndReached={onEndReached}
         onEndReachedThreshold={10}
         enableEmptySections
       />
@@ -94,8 +95,8 @@ export default class List extends React.Component {
 
 List.propTypes = {
   loading: React.PropTypes.bool.isRequired,
-  fetchList: React.PropTypes.func.isRequired,
   fetchEdit: React.PropTypes.func.isRequired,
   data: React.PropTypes.array.isRequired,
-  currentPage: React.PropTypes.number,
+  onEndReached: React.PropTypes.func.isRequired,
+  onRefresh: React.PropTypes.func.isRequired,
 };

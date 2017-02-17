@@ -1,7 +1,6 @@
 import React from 'react';
-import { View, Text, TouchableHighlight, RefreshControl, StyleSheet } from 'react-native';
+import { View, Text, RefreshControl, StyleSheet } from 'react-native';
 import { ListView } from 'antd-mobile';
-import Swipeout from 'react-native-swipe-out';
 
 import ListItemOperation from '../../components/ListItemOperation';
 

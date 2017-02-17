@@ -19,48 +19,50 @@ export default function (state = initialState, action) {
       {
         let goods = {};
         if (action.payload.specType) {
-          console.log(1111);
-        } else {
-          let spec = '';
-          if (action.payload.spec) {
-            spec = JSON.parse(action.payload.spec)['规格'][0];
-          }
+          return { ...state,
 
-          let specinfo = '';
-          if (action.payload.specinfo) {
-            specinfo = JSON.parse(action.payload.specinfo)[0];
-          }
-          goods = {
-            goodsSpec: {
-              name: 'goodsSpec',
-              value: spec,
-            },
-            goodsMerchantCode: {
-              name: 'goodsMerchantCode',
-              value: `${specinfo.goodsMerchantCode}`,
-            },
-            goodsBarCode: {
-              name: 'goodsBarCode',
-              value: `${specinfo.goodsBarCode}`,
-            },
-            goodsReferencePrice: {
-              name: 'goodsReferencePrice',
-              value: `${specinfo.goodsReferencePrice}`,
-            },
-            goodsVolume: {
-              name: 'goodsVolume',
-              value: specinfo.goodsVolume,
-            },
-            goodsWeight: {
-              name: 'goodsWeight',
-              value: specinfo.goodsWeight,
-            },
-            synInventoryType: {
-              name: 'synInventoryType',
-              value: specinfo.synInventoryType,
-            },
           };
         }
+        let spec = '';
+        if (action.payload.spec) {
+          spec = JSON.parse(action.payload.spec)['规格'][0];
+        }
+
+        let specinfo = '';
+        if (action.payload.specinfo) {
+          specinfo = JSON.parse(action.payload.specinfo)[0];
+        }
+        goods = {
+          goodsSpec: {
+            name: 'goodsSpec',
+            value: spec,
+          },
+          goodsMerchantCode: {
+            name: 'goodsMerchantCode',
+            value: `${specinfo.goodsMerchantCode}`,
+          },
+          goodsBarCode: {
+            name: 'goodsBarCode',
+            value: `${specinfo.goodsBarCode}`,
+          },
+          goodsReferencePrice: {
+            name: 'goodsReferencePrice',
+            value: `${specinfo.goodsReferencePrice}`,
+          },
+          goodsVolume: {
+            name: 'goodsVolume',
+            value: specinfo.goodsVolume,
+          },
+          goodsWeight: {
+            name: 'goodsWeight',
+            value: specinfo.goodsWeight,
+          },
+          synInventoryType: {
+            name: 'synInventoryType',
+            value: specinfo.synInventoryType,
+          },
+        };
+
         return { ...state,
           edit: Object.assign(goods, {
             goodsName: {

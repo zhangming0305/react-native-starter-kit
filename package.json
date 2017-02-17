@@ -5,6 +5,7 @@
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "test": "jest",
+    "test-all": "npm run lint && npm run test ",
     "lint": "eslint src",
     "lint:fix": "eslint src --fix"
   },
