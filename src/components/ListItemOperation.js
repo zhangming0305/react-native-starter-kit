@@ -15,7 +15,7 @@ export default class ListItemOperation extends React.Component {
         onLongPress={() => {
           Alert.alert(
             operation[0].text,
-            null, [{
+            `确定要${operation[0].text}吗？`, [{
               text: '取消',
               style: 'cancel',
             },

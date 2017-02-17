@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Alert } from 'react-native';
+import { View, Alert, Keyboard } from 'react-native';
 import { InputItem, List, ActivityIndicator } from 'antd-mobile';
 import { createForm } from 'rc-form';
 import { Actions } from 'react-native-router-flux';
@@ -18,6 +18,7 @@ export class GoodsEdit extends React.Component {
   }
 
   submit() {
+    Keyboard.dismiss(0);
     this.props.form.validateFields((err, values) => {
       if (!err) {
         const { edit, fetchSave } = this.props;
