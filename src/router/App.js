@@ -10,6 +10,7 @@ import GoodsContainer from '../containers/goodsList/Container';
 import GoodsEditContainer from '../containers/goodsEdit/Container';
 import GoodsBrandListContainer from '../containers/goodsBrandList/Container';
 import GoodsBrandEditContainer from '../containers/goodsBrandEdit/Container';
+import QuickEntriesContainer from '../containers/quickEntries/Container';
 
 const RouterWithRedux = connect()(Router);
 
@@ -46,7 +47,6 @@ const App = () =>
         title="登录"
         type={ActionConst.REPLACE}
         hideTabBar
-        initial
       />
       <Scene
         key="IndexContainer"
@@ -54,6 +54,7 @@ const App = () =>
         title="首页"
         type={ActionConst.REPLACE}
         hideTabBar
+        initial
       />
       <Scene
         key="GoodsContainer"
@@ -82,6 +83,13 @@ const App = () =>
         key="GoodsBrandEditContainer"
         component={GoodsBrandEditContainer}
         title="品牌新增"
+        type={ActionConst.PUSH}
+        hideTabBar
+      />
+      <Scene
+        key="QuickEntriesContainer"
+        component={QuickEntriesContainer}
+        title="快捷功能"
         type={ActionConst.PUSH}
         hideTabBar
       />
