@@ -9,12 +9,12 @@ export class Container extends React.Component {
 
 
   render() {
-    const { edit } = this.props.indexState;
-    const { onFieldsChange } = this.props;
+    const { checkedEntries } = this.props.quickEntriesState;
+    const { onEntryCheck } = this.props;
     return (
       <Index
-        edit={edit}
-        onFieldsChange={onFieldsChange}
+        checkedEntries={checkedEntries}
+        onEntryCheck={onEntryCheck}
       />
     );
   }
@@ -22,12 +22,12 @@ export class Container extends React.Component {
 
 
 Container.propTypes = {
-  indexState: React.PropTypes.object.isRequired,
-  onFieldsChange: React.PropTypes.func.isRequired,
+  quickEntriesState: React.PropTypes.object.isRequired,
+  onEntryCheck: React.PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
-  indexState: state.indexReducer,
+  quickEntriesState: state.quickEntriesReducer,
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators(action, dispatch);

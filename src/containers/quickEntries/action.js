@@ -1,7 +1,5 @@
 import {
-  actionChange,
+  actionCheck,
 } from './reducer';
 
-export const onFieldsChange = data => (dispatch) => {
-  dispatch(actionChange(data));
-};
+export const onEntryCheck = data => actionCheck(data);
