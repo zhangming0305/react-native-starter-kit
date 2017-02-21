@@ -29,7 +29,7 @@ export default class EntriesList extends React.Component {
     this.renderItem = this.renderItem.bind(this);
   }
 
-  renderItem(dataItem, index) {
+  renderItem(dataItem) {
     return (
       <Flex
         direction="column"
