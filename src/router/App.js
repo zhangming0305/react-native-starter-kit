@@ -47,6 +47,7 @@ const App = () =>
         title="登录"
         type={ActionConst.REPLACE}
         hideTabBar
+        initial
       />
       <Scene
         key="IndexContainer"
@@ -54,7 +55,6 @@ const App = () =>
         title="首页"
         type={ActionConst.REPLACE}
         hideTabBar
-        initial
       />
       <Scene
         key="GoodsContainer"
