@@ -1,11 +1,12 @@
 import 'react-native';
 import React from 'react';
-import renderer from 'react-test-renderer';
-
+import { shallow } from 'enzyme';
+import { expect } from 'chai';
 import Arrow from '../src/components/Arrow';
 
-it('renders correctly', () => {
-  const tree = renderer.create(
-    <Arrow />,
-  );
+describe('<Arrow />', () => {
+  it('should render stuff', () => {
+    const wrapper = shallow(<Arrow />);
+    expect(wrapper.length).to.equal(1);
+  });
 });
