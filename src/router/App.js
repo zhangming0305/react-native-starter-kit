@@ -12,6 +12,8 @@ import GoodsBrandListContainer from '../containers/goodsBrandList/Container';
 import GoodsBrandEditContainer from '../containers/goodsBrandEdit/Container';
 import QuickEntriesContainer from '../containers/quickEntries/Container';
 
+import variables from '../styles/default';
+
 const RouterWithRedux = connect()(Router);
 
 const getSceneStyle = (/* NavigationSceneRendererProps */ props, computedProps) => {
@@ -31,7 +33,6 @@ const getSceneStyle = (/* NavigationSceneRendererProps */ props, computedProps) 
   return style;
 };
 
-
 const styles = StyleSheet.create({
   content: {
     ...Platform.select({
@@ -49,10 +50,13 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
   },
   navigationBarStyle: {
-    backgroundColor: '#2e2e2e',
+    backgroundColor: variables.brand_primary,
   },
   titleStyle: {
     color: 'white',
+  },
+  navigationBarStyle2: {
+    borderColor: 'white',
   },
 });
 
@@ -65,6 +69,8 @@ const App = () =>
         key="root"
         navigationBarStyle={styles.navigationBarStyle}
         titleStyle={styles.titleStyle}
+        backButtonImage={require('../../images/back_chevron.png')}
+        rightButtonTextStyle={styles.titleStyle}
       >
         <Scene
           key="WelcomeContainer"
